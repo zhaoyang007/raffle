@@ -11,5 +11,26 @@
 </head>
 <body>
   抽奖页面
+
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+  <script>
+    wx.config({
+        debug: false,
+        appId: 'wx81481c5eda0ae0a4', // 公众号后台获取
+        timestamp: '生成的时间戳', // 需后端API生成
+        nonceStr: '随机字符串', // 需后端API生成
+        signature: '签名', // 需后端API计算
+        jsApiList: ['updateAppMessageShareData']
+    });
+    wx.ready(function() {
+        // 动态设置分享内容
+        wx.updateAppMessageShareData({
+            title: '🎉 幸运大转盘抽奖！',
+            desc: '点击抽奖，100%中奖！',
+            link: window.location.href,
+            imgUrl: 'https://zhaoyang007.github.io/raffle/cover.jpg' // 必须HTTPS
+        });
+    });
+  </script>
 </body>
 </html>
